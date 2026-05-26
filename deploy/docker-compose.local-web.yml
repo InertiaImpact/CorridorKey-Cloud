@@ -1,0 +1,9 @@
+# Local override: rebuild frontend so uploads stay on this server origin.
+services:
+  corridorkey-web:
+    image: corridorkey-web:local
+    build:
+      context: ..
+      dockerfile: web/Dockerfile.web
+      args:
+        CKWEB_FILE_BASE: ${CKWEB_FILE_BASE:-}

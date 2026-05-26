@@ -43,6 +43,14 @@ services:
       - NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES:-all}
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility,video
       - CK_CLIPS_DIR=/app/Projects
+      - CK_AUTH_ENABLED=${CK_AUTH_ENABLED:-false}
+      - CK_JWT_SECRET=${CK_JWT_SECRET:-}
+      - CK_SUPABASE_URL=http://supabase-rest:3000
+      - CK_SUPABASE_SERVICE_KEY=${CK_SUPABASE_SERVICE_KEY:-}
+      - CK_GOTRUE_URL=${CK_GOTRUE_URL:-}
+      - CK_GOTRUE_INTERNAL_URL=${CK_GOTRUE_INTERNAL_URL:-http://supabase-auth:9999}
+      - CK_DATABASE_URL=${CK_DATABASE_URL:-}
+      - CK_MIGRATION_URL=${CK_MIGRATION_URL:-}
       - CK_AUTH_TOKEN=${CK_AUTH_TOKEN:-}
       - CK_METRICS_ENABLED=${CK_METRICS_ENABLED:-false}
       - CK_LOG_FORMAT=${CK_LOG_FORMAT:-text}
@@ -67,6 +75,7 @@ services:
       - CKWEB_FILE_BASE=${CKWEB_FILE_BASE-}
       - CK_MAX_UPLOAD_MB=${CK_MAX_UPLOAD_MB:-10240}
       - CK_CHUNK_SIZE_MB=${CK_CHUNK_SIZE_MB:-10}
+      - CK_MIN_NODE_VRAM_GB=${CK_MIN_NODE_VRAM_GB:-7.0}
     volumes:
       - ${CK_PROJECTS_DIR:-./Projects}:/app/Projects
       - ${CK_WEIGHTS_DIR:-./weights}/corridorkey:/app/CorridorKeyModule/checkpoints
